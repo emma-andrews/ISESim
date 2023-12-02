@@ -1,0 +1,83 @@
+
+firmware/test_simple_assembly/test_simple_assembly.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	00c5f503          	xc.ldr.b	a0,a1(a2)
+   4:	02c5f503          	xc.ldr.h	a0,a1(a2)
+   8:	04c5f503          	xc.ldr.w	a0,a1(a2)
+   c:	08c5f503          	xc.ldr.bu	a0,a1(a2)
+  10:	0ac5f503          	xc.ldr.hu	a0,a1(a2)
+  14:	50c5c023          	xc.str.b	a0,a1(a2)
+  18:	50c5c0a3          	xc.str.h	a0,a1(a2)
+  1c:	50c5c123          	xc.str.w	a0,a1(a2)
+  20:	74d64523          	xc.mmul.3	(# internal error, undefined modifier (X)
+  24:	74d645a3          	xc.macc.1	(# internal error, undefined modifier (X)
+  28:	76d64523          	xc.madd.3	(# internal error, undefined modifier (X)
+  2c:	76d655a3          	xc.msub.3	(# internal error, undefined modifier (X)
+  30:	70d65523          	xc.mror	(# internal error, undefined modifier (X)
+  34:	00300573          	xc.rngtest	a0
+  38:	00500573          	xc.rngsamp	a0
+  3c:	00750073          	xc.rngseed	a0
+  40:	62c5e533          	xc.lut	a0,a1,a2
+  44:	e4c5e533          	xc.bop	a0,a1,a2,# internal error, undefined modifier (X)
+  48:	c2c58573          	xc.padd	# internal error, undefined modifier (X)
+  4c:	c4c58573          	xc.psub	# internal error, undefined modifier (X)
+  50:	c6c58573          	xc.pror	# internal error, undefined modifier (X)
+  54:	c8c58573          	xc.psll	# internal error, undefined modifier (X)
+  58:	cac58573          	xc.psrl	# internal error, undefined modifier (X)
+  5c:	f0167503          	xc.pror.i	# internal error, undefined modifier (X)
+  60:	ec167503          	xc.psll.i	# internal error, undefined modifier (X)
+  64:	e8167503          	xc.psrl.i	# internal error, undefined modifier (X)
+  68:	ccc58573          	xc.pmul.l	# internal error, undefined modifier (X)
+  6c:	cec58573          	xc.pmul.h	# internal error, undefined modifier (X)
+  70:	d0c58533          	xc.pclmul.l	# internal error, undefined modifier (X)
+  74:	d2c58533          	xc.pclmul.h	# internal error, undefined modifier (X)
+  78:	60b54223          	xc.scatter.b	a0,a1,a2
+  7c:	60b542a3          	xc.scatter.h	a0,a1,a2
+  80:	34c5e513          	ori	a0,a1,844
+  84:	36c5e513          	ori	a0,a1,876
+  88:	1ac5f503          	xc.aessub.enc	a0,a1,a2
+  8c:	1cc5f503          	xc.aessub.encrot	a0,a1,a2
+  90:	1ec5f503          	xc.aessub.dec	a0,a1,a2
+  94:	20c5f503          	xc.aessub.decrot	a0,a1,a2
+  98:	22c5f503          	xc.aesmix.enc	a0,a1,a2
+  9c:	24c5f503          	xc.aesmix.dec	a0,a1,a2
+  a0:	0e05f503          	xc.sha256.s0	a0,a1
+  a4:	0e15f503          	xc.sha256.s1	a0,a1
+  a8:	0e25f503          	xc.sha256.s2	a0,a1
+  ac:	0e35f503          	xc.sha256.s3	a0,a1
+  b0:	10c5f503          	xc.sha3.xy	a0,a1,a2,# internal error, undefined modifier (X)
+  b4:	12c5f503          	xc.sha3.x1	a0,a1,a2,# internal error, undefined modifier (X)
+  b8:	14c5f503          	xc.sha3.x2	a0,a1,a2,# internal error, undefined modifier (X)
+  bc:	16c5f503          	xc.sha3.x4	a0,a1,a2,# internal error, undefined modifier (X)
+  c0:	18c5f503          	xc.sha3.yx	a0,a1,a2,# internal error, undefined modifier (X)
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	3841                	jal	fffff890 <main+0xfffff890>
+   2:	0000                	unimp
+   4:	7200                	flw	fs0,32(a2)
+   6:	7369                	lui	t1,0xffffa
+   8:	01007663          	bgeu	zero,a6,14 <main+0x14>
+   c:	002e                	c.slli	zero,0xb
+   e:	0000                	unimp
+  10:	7205                	lui	tp,0xfffe1
+  12:	3376                	fld	ft6,376(sp)
+  14:	6932                	flw	fs2,12(sp)
+  16:	7032                	flw	ft0,44(sp)
+  18:	5f30                	lw	a2,120(a4)
+  1a:	326d                	jal	fffff9c4 <main+0xfffff9c4>
+  1c:	3070                	fld	fa2,224(s0)
+  1e:	615f 7032 5f30      	0x5f307032615f
+  24:	30703263          	0x30703263
+  28:	625f 7032 5f30      	0x5f307032625f
+  2e:	6378                	flw	fa4,68(a4)
+  30:	7972                	flw	fs2,60(sp)
+  32:	7470                	flw	fa2,108(s0)
+  34:	3070326f          	jal	tp,3b3a <main+0x3b3a>
+  38:	00              	Address 0x0000000000000038 is out of bounds.
+
