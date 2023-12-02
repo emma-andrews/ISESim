@@ -75,9 +75,12 @@ TB += $(SOC_HOME)/verif/scarv-soc/dut_wrapper.cpp
 TB += $(SOC_HOME)/verif/scarv-soc/testbench.cpp
 TB += $(SOC_HOME)/verif/scarv-soc/main.cpp
 
-all: $(VMODULE) # toggle concat
-	./obj_dir/$(VMODULE)
-	# ./obj_dir/toggle
+all: $(VMODULE) toggle #concat
+	cp hexgen/firmware/test_simple_assembly/ram.hex obj_dir/rom.hex
+	touch obj_dir/ram.hex
+
+	-./obj_dir/$(VMODULE) +WAVES=obj_dir/sim.vcd +TIMEOUT=10000
+	./obj_dir/toggle
 	# ./obj_dir/concat $(MODULE).csv
 	# rm actual.csv
 	# rm toggle.csv
@@ -103,6 +106,7 @@ clean:
 	rm -f $(MODULE).svg
 	rm -f ../results.txt
 	rm -f contingency_tables.txt
+
 
 
 

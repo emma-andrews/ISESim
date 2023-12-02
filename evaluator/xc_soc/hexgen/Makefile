@@ -1,5 +1,5 @@
 # GCC_PATH =  ../../../../compiled/xcrypto_binaries
-GCC_PATH =  /opt/riscv-xcrypto/bin/
+GCC_PATH =  /opt/riscv-xcrypto/bin
 
 
 CC              = $(GCC_PATH)/riscv32-unknown-elf-gcc
