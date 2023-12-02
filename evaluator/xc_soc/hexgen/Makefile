@@ -94,3 +94,8 @@ $(eval $(call add_sw_example_target,$(EXAMPLE_NAME),$(EXAMPLE_SRCS)))
 
 run-example-% : example-%
 	cd $(SW_EXAMPLES_DIR)/$* ; ./verilated +TIMEOUT=10000000 +WAIT
+
+.PHONY: clean
+
+clean:
+	rm -rf $(SOC_WORK)
