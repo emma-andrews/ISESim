@@ -13,10 +13,10 @@ OBJCOPY_HEX_ARGS= --gap-fill 0
 
 
 SOC_HOME =  ../../../eut/scarv-soc
-SOC_WORK = work
+SOC_WORK = ../obj_dir
 
 SW_EXAMPLES_LINK    = $(SOC_HOME)/src/examples/share/link.ld
-SW_EXAMPLES_DIR     = firmware
+SW_EXAMPLES_DIR     = $(SOC_WORK)
 
 BSP_BUILD   = $(SOC_WORK)/bsp
 BSP_INCLUDE = $(BSP_BUILD)/include
@@ -80,9 +80,9 @@ example-${1} : $(call map_sw_example_elf,${1}) \
                $(call map_sw_example_hex,${1}) \
                $(call map_sw_example_bin,${1}) \
                $(VL_OUT)                       \
-               $(FSBL_HEX)                     
-	cp $(FSBL_HEX)  $(call map_sw_example_dir,${1})/rom.hex
-	cp $(VL_OUT)    $(call map_sw_example_dir,${1})/verilated
+               $(FSBL_HEX)  
+	cp  $(call map_sw_example_dir,${1})/ram.hex   $(SOC_WORK)/ram.hex              
+	#cp $(FSBL_HEX)  $(call map_sw_example_dir,${1})/rom.hex
 
 endef
 
@@ -93,9 +93,9 @@ EXAMPLE_SRCS=firmware/test_simple_assembly.S
 $(eval $(call add_sw_example_target,$(EXAMPLE_NAME),$(EXAMPLE_SRCS)))
 
 run-example-% : example-%
-	cd $(SW_EXAMPLES_DIR)/$* ; ./verilated +TIMEOUT=10000000 +WAIT
+	cd $(SOC_WORK); ./Vscarv_soc +TIMEOUT=1000 +WAVES=sim.vcd
 
 .PHONY: clean
 
 clean:
-	rm -rf $(SOC_WORK)
+	rm -rf $(SW_EXAMPLES_DIR)
