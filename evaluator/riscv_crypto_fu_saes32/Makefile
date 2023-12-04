@@ -7,4 +7,4 @@ DUTPATH=../../eut/riscv-crypto/rtl/crypto-fu/$(MODULE).v
 DUTPATH += ../../eut/riscv-crypto/rtl/crypto-fu/riscv_crypto_fu_sboxes.v
 POWER_LIBS=../power_libs
 
-include $(POWER_LIBS)/common.mk
+include $(POWER_LIBS)/tvla-fu.mk

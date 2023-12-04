@@ -6,4 +6,16 @@ VMODULE=V$(MODULE)
 DUTPATH=../../eut/xcrypto/rtl/$(MODULE)/$(MODULE).v
 POWER_LIBS=../power_libs
 
-include $(POWER_LIBS)/common.mk
+SOC=scarv_soc
+SOC_DIR=../$(SOC)
+
+APP_NAME=aes
+FIRMWARE=$(SOC_DIR)/firmware
+APP_SRC=$(FIRMWARE)/aes.S
+
+
+include $(POWER_LIBS)/tvla-soc.mk
+include $(POWER_LIBS)/tvla-fu.mk
+include $(SOC_DIR)/firmware.mk
+
+
