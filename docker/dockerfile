@@ -1,6 +1,15 @@
 FROM scarv/libscarv.riscv-xcrypto:1.0.0 as builder
 ARG DEBIAN_FRONTEND=noninteractive
 
+echo -e 'echo -e "
+\033[0;34m                        .__     ___________         
+\033[0;34m_____   _______   ____  |  |__  \_   _____/___  ___ 
+\033[0;34m\\__  \\  \\_  __ \\_/ ___\\ |  |  \\  |    __)  \\  \\/  / 
+\033[0;34m / __ \\_ |  | \\/\\  \\___ |   Y  \\ |     \\    >    <  
+\033[0;34m(____  / |__|    \\___  >|___|  / \\___  /   /__/\_ \\ 
+\033[0;34m     \\/              \\/      \\/      \\/          \\/  
+\033[0m"' >> ~/.bashrc
+
 RUN apt-get update && apt-get install -y \
         git wget libmpc-dev verilator pip
 
