@@ -41,7 +41,7 @@ $(FW_OBJDUMP) : $(FW_OBJ)
 
 $(FW_HEX) : $(FW_OBJ)
 	@mkdir -p $(dir $@)
-	#$(OBJCOPY) $(OBJCOPY_HEX_ARGS) --change-address=0xF0000000 -O verilog $< $@
+	$(OBJCOPY) $(OBJCOPY_HEX_ARGS) --change-address=0xE0000000 -O verilog $< $@
 	#$(POWER_LIBS)/vl-hex-align --scale 4 $@ 
 	touch $(SOC_WORK)/rom.hex
 # $(FW_VIVADO_HEX) : $(FW_OBJ)
