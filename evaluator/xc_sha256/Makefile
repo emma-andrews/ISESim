@@ -10,7 +10,7 @@ POWER_LIBS=../power_libs
 SOC=scarv_soc
 SOC_DIR=../$(SOC)
 
-APP_NAME=aes
+APP_NAME=sha
 FIRMWARE=$(SOC_DIR)/firmware
 APP_SRC=$(FIRMWARE)/sha.S
 

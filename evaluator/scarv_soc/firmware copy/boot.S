@@ -1,4 +1,5 @@
 
+
 .text
 .global _start
 _start:
@@ -38,16 +39,5 @@ _start:
     li sp, 0x2000FFF0
 
     j       main                    // Jump to the first stage boot loader.
-main:
-    lui    a1, 36   
-    addi   a1, a1, 54 
-    lui    a2, 55    
-    addi   a2, a2, 62
-    nop
-    j work # jump to cryptographic workloadwork:
-  xc.aessub.enc     a0,a1,a2
-  xc.aessub.encrot  a0,a1,a2
-  xc.aessub.dec     a0,a1,a2
-  xc.aessub.decrot  a0,a1,a2
-  xc.aesmix.enc     a0,a1,a2
-  xc.aesmix.dec     a0,a1,a2
+
+

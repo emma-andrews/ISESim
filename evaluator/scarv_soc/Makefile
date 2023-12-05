@@ -87,8 +87,27 @@ $(VMODULE): obj_dir/$(VMODULE).mk
 	make -C obj_dir -f $(VMODULE).mk $(VMODULE)
 
 obj_dir/$(VMODULE).mk:
-	verilator -Wall --trace --public-flat-rw --cc -I$(SCARV_CPU)/rtl/core/  -Wno-lint -CFLAGS "-DMODULENAME=$(VMODULE) -include $(VMODULE).h " $(DUTPATH) --top-module $(MODULE) --exe $(TB)
+	verilator -Wall --trace --public-flat-rw --cc -I$(SCARV_CPU)/rtl/core/ \
+	 -Wno-lint -CFLAGS "-DMODULENAME=$(VMODULE) -include $(VMODULE).h " $(DUTPATH)\
+	  --top-module $(MODULE) --exe $(TB)  -GBRAM_ROM_MEMH_FILE="\"$(strip obj_dir/rom.hex)\"" \
+        -GBRAM_RAM_MEMH_FILE="\"$(strip obj_dir/ram.hex)\"" 
 
+
+# define tgt_verilator_build
+
+# ${1} : $(VL_CSRC)
+# 	@mkdir -p ${2}
+# 	$(VERILATOR) $(VL_FLAGS)  --Mdir ${2} -o ${1} \
+#         -GBRAM_ROM_MEMH_FILE="\"$(strip ${3})\"" \
+#         -GBRAM_RAM_MEMH_FILE="\"$(strip ${4})\"" \
+#         -f $(VL_RTL_MANIFEST) \
+#         -f $(VL_CPP_MANIFEST) \
+#         -f $(SCARV_CPU_MANIFEST)
+# 	$(MAKE) -C ${2} -f Vscarv_soc.mk
+
+# endef
+
+$(eval $(call tgt_verilator_build,$(VL_OUT),$(VL_DIR),rom.hex,ram.hex))
 #include firmware.mk
 
 clean:
