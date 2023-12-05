@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
     // Simulate for N iterations
     for (int i = 0; i < ITERATIONS; i++) {
 
-		std::ofstream outputFile("obj_dir/data.S");
+		std::ofstream outputFile("data.S");
     	// Output the .data section
     	outputFile << ".data" << std::endl;
         // Assign random values to inputs
@@ -73,8 +73,17 @@ int main(int argc, char **argv) {
 		// Close the output file
     	outputFile.close();
 
-		// Invoke the make command
-        int makeResult = std::system("make compile");
+		// Invoke the make firmware
+        int makeResult = std::system("make -s -C ../ compile");
+        
+        // Check the result of the make command
+        if (makeResult != 0) {
+            std::cerr << "Error: make command failed." << std::endl;
+            return 1;  // You might want to handle the error accordingly
+        }
+
+        // Invoke the make soc
+        makeResult = std::system("make -s -C ../ soc");
         
         // Check the result of the make command
         if (makeResult != 0) {
@@ -83,7 +92,7 @@ int main(int argc, char **argv) {
         }
 
         // Invoke the simulation
-        std::string command = "./obj_dir/" + socName + " +WAVES=obj_dir/sim.vcd +TIMEOUT=1000";
+        std::string command = "./" + socName + " +WAVES=obj_dir/sim.vcd +TIMEOUT=1000";
         int socRun = std::system(command.c_str());   
 
         // Check the result of the make command

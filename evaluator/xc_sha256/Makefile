@@ -1,3 +1,7 @@
+# ifndef VERBOSE
+# .SILENT:
+# endif
+
 #Update the module name for the DuT
 MODULE=xc_sha256
 
@@ -13,8 +17,10 @@ SOC_DIR=../$(SOC)
 APP_NAME=sha
 FIRMWARE=$(SOC_DIR)/firmware
 APP_SRC=$(FIRMWARE)/sha.S
+SOC_WORK = obj_dir
 
 
 include $(POWER_LIBS)/tvla-soc.mk
 include $(POWER_LIBS)/tvla-fu.mk
 include $(SOC_DIR)/firmware.mk
+include $(SOC_DIR)/soc.mk
