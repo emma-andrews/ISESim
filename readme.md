@@ -104,7 +104,7 @@ XCYPTO ISE is implemented in the SOC implementation of [scarv-soc](https://githu
 
 
 <p align="center">
-  <img  src="/evaluator/xc_aesmix/Vscarv_soc-xc_sha256.svg">
+  <img  src="/evaluator/xc_aesmix/Vscarv_soc-xc_aesmix.svg">
   <p align="center">
    <em>Power signature of xc_aesmix on the system evaluation compared with the inputs</em>
    </p>
