@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <cstdlib> 
 
-#define ITERATIONS 10
+#define ITERATIONS 10000
 
 // Function to generate a random 64-bit number with a specific Hamming weight
 template <typename T>
@@ -128,6 +128,7 @@ int main(int argc, char **argv) {
                 }
 
                 file.close();
+                std::system("rm toggle.csv");
 
                 int maxValue = findMaxCSV(data);
                 std::cout << "Maximum value in the CSV file: " << maxValue << std::endl;
