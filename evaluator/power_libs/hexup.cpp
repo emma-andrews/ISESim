@@ -10,6 +10,17 @@
 #include <cstdlib> 
 
 #define ITERATIONS 10
+#define PBSTR "------------------------------------------------------------"
+#define PBWIDTH 60
+
+// print pregress
+void printProgress(double percentage) {
+    int val = (int) (percentage * 100);
+    int lpad = (int) (percentage * PBWIDTH);
+    int rpad = PBWIDTH - lpad;
+    printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
+    fflush(stdout);
+}
 
 // Function to generate a random 64-bit number with a specific Hamming weight
 template <typename T>
@@ -76,6 +87,7 @@ int main(int argc, char **argv) {
     std::ofstream csvFile( "../" + socName +"-" + fuName + ".csv");
     csvFile << "hw(rs1),HW" << std::endl;
 
+    std::cout << "\033[0;32mSimulating the SoC \033[0m" << std::endl;
     // Simulate for N iterations
     for (int i = 0; i < ITERATIONS; i++) {
 
@@ -102,7 +114,7 @@ int main(int argc, char **argv) {
         }
 
         // Invoke the simulation
-        std::string command = "./" + socName + " +q +WAVES=sim.vcd +TIMEOUT=1000 +PASS_ADDR=0x10000066";
+        std::string command = "./" + socName + " +q +WAVES=sim.vcd +TIMEOUT=1000 +PASS_ADDR=0x10000066 >> sim.log";
         int socRun = std::system(command.c_str());   
 
         // Check the result of the make command
@@ -131,14 +143,16 @@ int main(int argc, char **argv) {
                 std::system("rm toggle.csv");
 
                 int maxValue = findMaxCSV(data);
-                std::cout << "Maximum value in the CSV file: " << maxValue << std::endl;
                 csvFile << hammingWeight(randomValue_1) << "," << maxValue << std::endl;
 
             }
 
             
         }
+        printProgress((double) i/(double)(ITERATIONS));
     }
+    printProgress((double) 1);
+    std::cout << "\n";
     csvFile.close();
 
     return 0;

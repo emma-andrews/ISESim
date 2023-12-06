@@ -11,6 +11,17 @@
 #include <bitset>
 
 #define NUM_CYCLES 50000
+#define PBSTR "------------------------------------------------------------"
+#define PBWIDTH 60
+
+// print pregress
+void printProgress(double percentage) {
+    int val = (int) (percentage * 100);
+    int lpad = (int) (percentage * PBWIDTH);
+    int rpad = PBWIDTH - lpad;
+    printf("\r%3d%% [%.*s%*s]", val, lpad, PBSTR, rpad, "");
+    fflush(stdout);
+}
 
 // Random number generator
 
@@ -65,6 +76,7 @@ int main(int argc, char **argv) {
     ADD_HEADER_TO_CSV();
     outputFile << "0" << std::endl; // Align the inputs with outputs
     // Simulate for N clock cycles
+    std::cout << "\033[0;32mSimulating the Functional Unit \033[0m" << std::endl;
     for (int i = 0; i < NUM_CYCLES; i++) {
         // Assign random values to inputs
         SET_RAND_VALS();
@@ -77,7 +89,11 @@ int main(int argc, char **argv) {
         
         // Save rs1 and rs2 values to the CSV file
         ADD_ROW_TO_CSV();
+
+        printProgress((double) i/(double)(NUM_CYCLES));
     }
+    printProgress((double) 1);
+    std::cout << "\n";
 
     // Close the VCD file and cleanup
     tfp->close();
