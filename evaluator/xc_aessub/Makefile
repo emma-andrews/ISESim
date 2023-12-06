@@ -13,7 +13,7 @@ SOC_DIR=../$(SOC)
 
 APP_NAME=aes
 FIRMWARE=$(SOC_DIR)/firmware
-APP_SRC=$(FIRMWARE)/aes.S
+APP_SRC=$(FIRMWARE)/aessub.S
 
 
 include $(POWER_LIBS)/tvla-soc.mk

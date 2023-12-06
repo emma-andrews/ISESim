@@ -16,10 +16,11 @@ LINKER    = $(SOC_HOME)/src/examples/share/link.ld
 LINKER    = $(SOC_HOME)/src/fsbl/link.ld
 
 
-FW_SRC=$(SOC_WORK)/firmware.S
+# FW_SRC=$(SOC_WORK)/firmware.S
 FW_OBJ    = $(SOC_WORK)/fw.elf
 FW_OBJDUMP= $(SOC_WORK)/fw.objdump
-FW_HEX    = $(SOC_WORK)/ram.hex
+# FW_HEX    = $(SOC_WORK)/ram.hex
+FW_HEX    = $(SOC_WORK)/$(HEXNAME)
 
 
 FW_CFLAGS = -nostartfiles -Os -O2 -Wall -fpic -fPIC \
@@ -28,7 +29,7 @@ FW_CFLAGS += -march=rv32imacb_xcrypto -mabi=ilp32
 
 compile: $(FW_HEX)
 
-$(FW_SRC):  $(FIRMWARE)/boot.S $(FIRMWARE)/main.S $(APP_SRC) #$(SOC_WORK)/data.S
+$(FW_SRC): $(SOC_WORK)/data.S $(FIRMWARE)/boot.S $(FIRMWARE)/main.S $(APP_SRC) 
 	cat $^ > $@
 
 $(FW_OBJ) : $(FW_SRC)

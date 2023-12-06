@@ -84,7 +84,9 @@ soc: $(VSOC)
 
 
 $(VSOC): obj_dir/$(VSOC).mk
+	cd obj_dir/ && touch rom.hex && touch ram.hex
 	make -C obj_dir -f $(VSOC).mk $(VSOC)
+	# make compile FW_SRC=$(FIRMWARE)/boot.S HEXNAME=rom.hex
 
 obj_dir/$(VSOC).mk:
 	verilator -Wall --trace --public-flat-rw --cc  "-O2" -O3 -I$(SCARV_CPU)/rtl/core/ \

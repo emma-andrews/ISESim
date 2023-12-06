@@ -1,7 +1,7 @@
 
 tvla-soc: tvla-fu print-soc soc-model #firmcat compile
 
-soc-model: clean-fu hexup
+soc-model: clean-fu soc hexup
 
 
 print-soc:

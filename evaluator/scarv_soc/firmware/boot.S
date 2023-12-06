@@ -36,8 +36,6 @@ _start:
     li x30, 0
     li x31, 0
 
-    li sp, 0x2000FFF0
-
-    j       main
+    j      main
 
 

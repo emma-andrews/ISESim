@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
     	outputFile.close();
 
 		// Invoke the make firmware
-        int makeResult = std::system("make -s -C ../ compile");
+        int makeResult = std::system("make -s -C ../ compile FW_SRC=obj_dir/firmware.S HEXNAME=rom.hex");
         
         // Check the result of the make command
         if (makeResult != 0) {
@@ -82,17 +82,17 @@ int main(int argc, char **argv) {
             return 1;  // You might want to handle the error accordingly
         }
 
-        // Invoke the make soc
-        makeResult = std::system("make -s -C ../ soc");
+        // // Invoke the make soc
+        // int makeResult = std::system("make -s -C ../ soc");
         
-        // Check the result of the make command
-        if (makeResult != 0) {
-            std::cerr << "Error: make command failed." << std::endl;
-            return 1;  // You might want to handle the error accordingly
-        }
+        // // Check the result of the make command
+        // if (makeResult != 0) {
+        //     std::cerr << "Error: make command failed." << std::endl;
+        //     return 1;  // You might want to handle the error accordingly
+        // }
 
         // Invoke the simulation
-        std::string command = "./" + socName + " +WAVES=obj_dir/sim.vcd +TIMEOUT=1000";
+        std::string command = "./" + socName + " +WAVES=sim.vcd +TIMEOUT=1000 +PASS_ADDR=0x10000066";
         int socRun = std::system(command.c_str());   
 
         // Check the result of the make command
