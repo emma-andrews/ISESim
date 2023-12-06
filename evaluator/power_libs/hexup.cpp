@@ -63,16 +63,18 @@ int main(int argc, char **argv) {
     std::uniform_int_distribution<uint64_t> dis2(0,2);
 
     // Check if the correct number of command-line arguments is provided
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <compiled_simulator>" << std::endl;
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <compiled_simulator> <fu-name>" << std::endl;
         return 1;
     }
 
     // Retrieve the output file name from command-line arguments
     std::string socName = argv[1];
+    std::string fuName = argv[2];
     
     // Open a CSV file for writing
-    std::ofstream outputFile("obj_dir/actual.csv");
+    std::ofstream csvFile( "../" + socName +"-" + fuName + ".csv");
+    csvFile << "hw(rs1),HW" << std::endl;
 
     // Simulate for N iterations
     for (int i = 0; i < ITERATIONS; i++) {
@@ -100,7 +102,7 @@ int main(int argc, char **argv) {
         }
 
         // Invoke the simulation
-        std::string command = "./" + socName + " +WAVES=sim.vcd +TIMEOUT=1000 +PASS_ADDR=0x10000066";
+        std::string command = "./" + socName + " +q +WAVES=sim.vcd +TIMEOUT=1000 +PASS_ADDR=0x10000066";
         int socRun = std::system(command.c_str());   
 
         // Check the result of the make command
@@ -129,11 +131,14 @@ int main(int argc, char **argv) {
 
                 int maxValue = findMaxCSV(data);
                 std::cout << "Maximum value in the CSV file: " << maxValue << std::endl;
+                csvFile << hammingWeight(randomValue_1) << "," << maxValue << std::endl;
+
             }
 
             
         }
     }
+    csvFile.close();
 
     return 0;
 }

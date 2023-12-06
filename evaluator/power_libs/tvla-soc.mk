@@ -10,7 +10,8 @@ print-soc:
 hexup:
 	g++ $(POWER_LIBS)/hexup.cpp -o obj_dir/hexup
 	make toggle
-	cd  obj_dir && ./hexup V$(SOC)
+	cd  obj_dir && ./hexup V$(SOC) $(MODULE)
+	$(POWER_LIBS)/plotter V$(SOC)-$(MODULE).csv 1
 
 clean-fu:
 	rm -rf obj_dir 

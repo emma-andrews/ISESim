@@ -41,7 +41,7 @@ def plot_contingency_tables(tables, output_file=None):
         results_file.write("\nChi-squared test results\nModule: ")
         results_file.write(csv_file.replace('.csv', '.v'))
         print("Module: \033[95;1m", csv_file.replace('.csv', '.v'), "\033[0m")
-        with open("contingency_tables.txt", "w") as all_tables_file:
+        with open("contingency_tables-fu.txt", "w") as all_tables_file:
             for feature_column, contingency_table in tables.items():
                 all_tables_file.write(f"\nContingency Table for {feature_column}:\n")
                 all_tables_file.write(tabulate(contingency_table, headers='keys', tablefmt='fancy_grid'))
@@ -64,9 +64,9 @@ def plot_contingency_tables(tables, output_file=None):
 
 
 
-def plot_line_chart(csv_file, figure_width=8, figure_height=4, line_thickness=0.8):
+def plot_line_chart(csv_file, skip_size, figure_width=8, figure_height=4, line_thickness=0.8):
     try:
-        df = pd.read_csv(csv_file, skiprows=range(1, 11))
+        df = pd.read_csv(csv_file, skiprows=range(1, skip_size))
     except FileNotFoundError:
         print(f"Error: File '{csv_file}' not found.")
         sys.exit(1)
@@ -144,9 +144,10 @@ def plot_line_chart(csv_file, figure_width=8, figure_height=4, line_thickness=0.
 
 if __name__ == "__main__":
     # Check if a CSV file is provided as a command-line argument
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <csv_file>")
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <csv_file> <skip_size>")
         sys.exit(1)
 
     csv_file = sys.argv[1]
-    plot_line_chart(csv_file, 8, 3.5)
+    skip_size = int(sys.argv[2])
+    plot_line_chart(csv_file, skip_size, 8, 3.5)

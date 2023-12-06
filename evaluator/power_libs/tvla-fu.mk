@@ -4,7 +4,7 @@ tvla-fu: print-fu $(VMODULE) toggle concat
 	./obj_dir/concat $(MODULE).csv
 	rm obj_dir/actual.csv
 	rm obj_dir/toggle.csv
-	$(POWER_LIBS)/plotter $(MODULE).csv
+	$(POWER_LIBS)/plotter $(MODULE).csv 11
 
 $(VMODULE): obj_dir/$(VMODULE).mk
 	make -C obj_dir -f $(VMODULE).mk $(VMODULE)
@@ -29,4 +29,4 @@ clean:
 	rm -f $(MODULE).csv
 	rm -f $(MODULE).svg
 	rm -f ../results.txt
-	rm -f contingency_tables.txt
+	rm -f contingency_tables-fu.txt
