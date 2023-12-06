@@ -9,7 +9,7 @@
 #include <iomanip>
 #include <cstdlib> 
 
-#define ITERATIONS 10
+#define ITERATIONS 1000
 #define PBSTR "------------------------------------------------------------"
 #define PBWIDTH 60
 
