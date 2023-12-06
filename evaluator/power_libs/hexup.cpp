@@ -33,6 +33,23 @@ int hammingWeight(uint64_t value) {
     return weight;
 }
 
+int findMaxCSV(const std::vector<int>& data) {
+    if (data.empty()) {
+        std::cerr << "Empty data vector." << std::endl;
+        return -1; // You can handle this case differently based on your requirements.
+    }
+
+    int max = data[0];
+
+    for (int value : data) {
+        if (value > max) {
+            max = value;
+        }
+    }
+
+    return max;
+}
+
 int main(int argc, char **argv) {
 
     // Initialize random number generator
@@ -55,7 +72,7 @@ int main(int argc, char **argv) {
     std::string socName = argv[1];
     
     // Open a CSV file for writing
-    std::ofstream outputFile("actual.csv");
+    std::ofstream outputFile("obj_dir/actual.csv");
 
     // Simulate for N iterations
     for (int i = 0; i < ITERATIONS; i++) {
@@ -82,15 +99,6 @@ int main(int argc, char **argv) {
             return 1;  // You might want to handle the error accordingly
         }
 
-        // // Invoke the make soc
-        // int makeResult = std::system("make -s -C ../ soc");
-        
-        // // Check the result of the make command
-        // if (makeResult != 0) {
-        //     std::cerr << "Error: make command failed." << std::endl;
-        //     return 1;  // You might want to handle the error accordingly
-        // }
-
         // Invoke the simulation
         std::string command = "./" + socName + " +WAVES=sim.vcd +TIMEOUT=1000 +PASS_ADDR=0x10000066";
         int socRun = std::system(command.c_str());   
@@ -99,6 +107,31 @@ int main(int argc, char **argv) {
         if (socRun != 0) {
             std::cerr << socRun <<"Error: make command failed." << std::endl;
             return 1;  // You might want to handle the error accordingly
+        }
+        else {
+            int toggleResult = std::system("./toggle");
+        
+            // Check the result of the make command
+            if (toggleResult == 0) {
+                std::ifstream file("toggle.csv");
+
+                std::vector<int> data;
+                std::string line, value;
+
+                // Skip the header
+                std::getline(file, line);
+
+                while (std::getline(file, value)) {
+                    data.push_back(std::stoi(value));
+                }
+
+                file.close();
+
+                int maxValue = findMaxCSV(data);
+                std::cout << "Maximum value in the CSV file: " << maxValue << std::endl;
+            }
+
+            
         }
     }
 

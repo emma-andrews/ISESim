@@ -9,6 +9,7 @@ print-soc:
 
 hexup:
 	g++ $(POWER_LIBS)/hexup.cpp -o obj_dir/hexup
+	make toggle
 	cd  obj_dir && ./hexup V$(SOC)
 
 clean-fu:

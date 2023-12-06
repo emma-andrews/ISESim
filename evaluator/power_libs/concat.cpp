@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 
     std::string outputFilePath = argv[1];
 
-    mergeCSVColumns("actual.csv", "toggle.csv", outputFilePath);
+    mergeCSVColumns("obj_dir/actual.csv", "obj_dir/toggle.csv", outputFilePath);
 
     return 0;
 }

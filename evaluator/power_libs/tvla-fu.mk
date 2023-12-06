@@ -1,9 +1,9 @@
 tvla-fu: print-fu $(VMODULE) toggle concat
 	./obj_dir/$(VMODULE)
-	./obj_dir/toggle
+	cd obj_dir && ./toggle
 	./obj_dir/concat $(MODULE).csv
-	rm actual.csv
-	rm toggle.csv
+	rm obj_dir/actual.csv
+	rm obj_dir/toggle.csv
 	$(POWER_LIBS)/plotter $(MODULE).csv
 
 $(VMODULE): obj_dir/$(VMODULE).mk

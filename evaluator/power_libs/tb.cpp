@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
     std::uniform_int_distribution<uint64_t> dis2(0,2);
     
     // Open a CSV file for writing
-    std::ofstream outputFile("actual.csv");
+    std::ofstream outputFile("obj_dir/actual.csv");
     ADD_HEADER_TO_CSV();
     outputFile << "0" << std::endl; // Align the inputs with outputs
     // Simulate for N clock cycles
