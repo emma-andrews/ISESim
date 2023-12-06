@@ -8,6 +8,6 @@ SUBDIRS := $(filter-out scarv_soc/., $(SUBDIRS))
 
 $(TOPTARGETS): $(SUBDIRS)
 $(SUBDIRS):
-		$(MAKE) -C $@ $(MAKECMDGOALS)
+		$(MAKE) -s -C $@ $(MAKECMDGOALS)
 
 .PHONY: $(TOPTARGETS) $(SUBDIRS)

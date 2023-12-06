@@ -2,23 +2,59 @@
 
 
 Chi-squared test results
-Module: xc_sha256.v
-Chi-squared test for hw(rs1):
+Module: riscv_crypto_fu_ssha512.v
+Chi-squared test for hw(rs1)+hw(rs2):
 ╒══════════════╤═══════════╕
 │   Chi2 value │   P-value │
 ╞══════════════╪═══════════╡
-│       294044 │         0 │
+│       171701 │         0 │
 ╘══════════════╧═══════════╛
 
 
 
 
 Chi-squared test results
-Module: Vscarv_soc-xc_sha256.v
+Module: xc_aessub.v
+Chi-squared test for hw(rs1)+hw(rs2):
+╒══════════════╤═══════════╕
+│   Chi2 value │   P-value │
+╞══════════════╪═══════════╡
+│       155011 │         0 │
+╘══════════════╧═══════════╛
+
+
+
+
+Chi-squared test results
+Module: Vscarv_soc-xc_aessub.v
 Chi-squared test for hw(rs1):
 ╒══════════════╤═══════════╕
 │   Chi2 value │   P-value │
 ╞══════════════╪═══════════╡
-│           20 │  0.130141 │
+│       169918 │         0 │
+╘══════════════╧═══════════╛
+
+
+
+
+Chi-squared test results
+Module: riscv_crypto_fu_saes32.v
+Chi-squared test for hw(rs1)+hw(rs2):
+╒══════════════╤═══════════╕
+│   Chi2 value │   P-value │
+╞══════════════╪═══════════╡
+│      96241.8 │         0 │
+╘══════════════╧═══════════╛
+
+
+
+
+Chi-squared test results
+Module: xc_sha256.v
+Chi-squared test for hw(rs1):
+╒══════════════╤═══════════╕
+│   Chi2 value │   P-value │
+╞══════════════╪═══════════╡
+│       297510 │         0 │
 ╘══════════════╧═══════════╛
 
