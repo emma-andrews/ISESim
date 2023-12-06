@@ -85,6 +85,8 @@ Original implementations of the hardware functional units of RISCV-CRYPTO have a
 
 ### Pre-Silicon Side Channel Evaluation of XCRYPTO ISE
 
+
+#### Functional Unit Evaluation
 Original implementations of the hardware functional units of XCRYPTO have a strong correlation with the input values.
 As an example following is the power side channel signature of the [xc_sha256](https://github.com/scarv/xcrypto/blob/9ff3426a9d498bf41880caca4bc3769eec0e5093/rtl/xc_sha256/xc_sha256.v) functional unit and the visual relationship between the input values.  Evaluation results of other components are available in ```evaluator``` folder.
 
@@ -96,16 +98,14 @@ As an example following is the power side channel signature of the [xc_sha256](h
    </p>
 </p>
 
+#### System Evaluation with SCARV_SOC
+
+XCYPTO ISE is implemented in the SOC implementation of [scarv-soc](https://github.com/scarv/scarv-soc). Therefore all the supporting functional units that are implemented on the scarv-soc are evaluated with the Cleo. Note that system evaluation takes a considerable amount of run time. However, there is a clearly visible statistical significance in the correlation between the input and the observed power values of the system.
 
 
-### System Evalaution with the SoCs ([WiP](https://github.com/Archfx/Cleo/tree/dev))
-
-This part of the project is still in development and on the [dev](https://github.com/Archfx/Cleo/tree/dev) branch. The steps for running the SoC version are as follows,
-
-```shell
-git fetch --all
-git checkout dev
-cd eut/scarv-soc
-git submodule update --init --recursive
-cd <fu> && make tvla-fu
-```
+<p align="center">
+  <img  src="/evaluator/xc_aesmix/Vscarv_soc-xc_sha256.svg">
+  <p align="center">
+   <em>Power signature of xc_aesmix on the system evaluation compared with the inputs</em>
+   </p>
+</p>

@@ -10,8 +10,6 @@ OBJCOPY         = $(GCC_PATH)/riscv32-unknown-elf-objcopy
 OBJCOPY_HEX_ARGS= --gap-fill 0 
 
 
-SOC_WORK = obj_dir
-
 LINKER    = $(SOC_HOME)/src/examples/share/link.ld
 LINKER    = $(SOC_HOME)/src/fsbl/link.ld
 

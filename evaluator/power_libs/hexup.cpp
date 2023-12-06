@@ -85,7 +85,8 @@ int main(int argc, char **argv) {
     
     // Open a CSV file for writing
     std::ofstream csvFile( "../" + socName +"-" + fuName + ".csv");
-    csvFile << "hw(rs1),HW" << std::endl;
+
+    ADD_HEADER_TO_CSV();
 
     std::cout << "\033[0;32mSimulating the SoC \033[0m" << std::endl;
     // Simulate for N iterations
@@ -94,13 +95,10 @@ int main(int argc, char **argv) {
 		std::ofstream outputFile("data.S");
     	// Output the .data section
     	outputFile << ".data" << std::endl;
-        // Assign random values to inputs
-        uint32_t randomValue_1 = distHw<uint32_t>(dis32(gen), generator);
-        uint32_t randomValue_2 = distHw<uint32_t>(dis32(gen), generator);
 
-        // // Output the values in the required format
-        outputFile << "    value_1:   .word   0x" << std::hex << randomValue_1 << std::endl;
-        outputFile << "    value_2:   .word   0x" << std::hex << randomValue_2 << std::endl;
+        // Assign random values to inputs
+        SET_RAND_VALS();
+
 		// Close the output file
     	outputFile.close();
 
@@ -143,7 +141,8 @@ int main(int argc, char **argv) {
                 std::system("rm toggle.csv");
 
                 int maxValue = findMaxCSV(data);
-                csvFile << hammingWeight(randomValue_1) << "," << maxValue << std::endl;
+                
+                ADD_ROW_TO_CSV();
 
             }
 

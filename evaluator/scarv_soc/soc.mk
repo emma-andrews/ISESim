@@ -2,8 +2,6 @@
 
 
 #Update the module name for the DuT
-# MODULE=scarv_soc
-
 SOC_HOME=../../eut/scarv-soc
 XCRYPTO_RTL=../../eut/xcrypto/rtl
 SCARV_CPU=../../eut/scarv-soc/extern/scarv-cpu
@@ -81,8 +79,6 @@ TB += $(SOC_HOME)/verif/scarv-soc/main.cpp
 soc: $(VSOC)
 	@echo "\033[0;32mSoC model generated \033[0m"
 
-
-
 $(VSOC): obj_dir/$(VSOC).mk
 	cd obj_dir/ && touch rom.hex && touch ram.hex
 	make -C obj_dir -f $(VSOC).mk $(VSOC)
@@ -93,25 +89,3 @@ obj_dir/$(VSOC).mk:
 	 -Wno-lint -CFLAGS "-w -DMODULENAME=$(VSOC) -include $(VSOC).h " $(SOCDUTPATH)\
 	  --top-module $(SOC) --exe $(TB)  -GBRAM_ROM_MEMH_FILE="\"rom.hex\"" \
         -GBRAM_RAM_MEMH_FILE="\"ram.hex\"" 
-
-
-# define tgt_verilator_build
-
-# ${1} : $(VL_CSRC)
-# 	@mkdir -p ${2}
-# 	$(VERILATOR) $(VL_FLAGS)  --Mdir ${2} -o ${1} \
-#         -GBRAM_ROM_MEMH_FILE="\"$(strip ${3})\"" \
-#         -GBRAM_RAM_MEMH_FILE="\"$(strip ${4})\"" \
-#         -f $(VL_RTL_MANIFEST) \
-#         -f $(VL_CPP_MANIFEST) \
-#         -f $(SCARV_CPU_MANIFEST)
-# 	$(MAKE) -C ${2} -f Vscarv_soc.mk
-
-# endef
-
-#$(eval $(call tgt_verilator_build,$(VL_OUT),$(VL_DIR),rom.hex,ram.hex))
-
-
-
-
-
