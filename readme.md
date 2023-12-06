@@ -40,7 +40,7 @@ Here is the project structure. all the extensions under testing (```eut```) are 
 │   ├── riscv_crypto_fu_ssha512
 │   ├── xc_sha256
 │   ├── xc_sha512
-│   └── xc_soc # Evaluation of the xcrypto soc
+│   └── scarv_soc # For the evaluations of the xcrypto ISE
 └── readme.md # You are looking at it
 ```
 
@@ -55,7 +55,7 @@ git clone https://github.com/Archfx/Cleo  cleo
 2. Use the following commands to initiate submodules
 ```shell
 cd cleo
-git submodule update --init
+git submodule update --init --recursive
 ```
 3. Pull the docker container and mount the project (You should be inside the project directory)
 ```shell
