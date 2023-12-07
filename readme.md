@@ -18,7 +18,7 @@ Test vector leakage assessment tries to quantify potential power side-channel le
 
 ### Project Structure
 
-Here is the project structure. all the extensions under testing (```eut```) are initialized as submodules. Currenlty,  [riscv-crypto](https://github.com/riscv/riscv-crypto/), [xcrypto](https://github.com/scarv/xcrypto) and [scarv-soc](https://github.com/scarv/scarv-soc) are elvaluated.
+Here is the project structure. All the extensions under testing (```eut```) are initialized as submodules. Currenlty,  [riscv-crypto](https://github.com/riscv/riscv-crypto/), [xcrypto](https://github.com/scarv/xcrypto) and [scarv-soc](https://github.com/scarv/scarv-soc) are elvaluated.
 
 
 ```bash
