@@ -61,7 +61,7 @@ git submodule update --init --recursive  eut/scarv-soc
 3. Pull the docker container and mount the project (You should be inside the project directory)
 ```shell
 docker pull archfx/cleo
-docker run -t -p 6080:6080 -v "${PWD}/:/Cleo" -w /Cleo --name cleo archfx/cleo
+docker run -t -p 6080:6080 -v "${PWD}/:/cleo" -w /cleo --name cleo archfx/cleo
 ```
 4. Access the docker container
 ```shell
