@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
         git wget libmpc-dev verilator pip
 
-RUN wget -o archfx https://raw.githubusercontent.com/Archfx/archfx/main/images/banner.txt;  cat archfx >> ~/.bashrc ; rm archfx
+RUN wget -O archfx https://raw.githubusercontent.com/Archfx/archfx/main/images/banner.txt;  cat archfx >> ~/.bashrc ; rm archfx
 
 RUN pip install matplotlib numpy scipy tabulate scikit-learn pandas
 
