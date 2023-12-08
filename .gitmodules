@@ -10,3 +10,4 @@
         path = eut/scarv-soc
         url = https://github.com/scarv/scarv-soc
         branch = master
+		recursive = true
