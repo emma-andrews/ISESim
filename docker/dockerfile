@@ -1,10 +1,10 @@
 FROM scarv/libscarv.riscv-xcrypto:1.0.0 as builder
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN wget -o archfx https://raw.githubusercontent.com/Archfx/archfx/main/images/banner.txt;  cat archfx >> ~/.bashrc ; rm archfx
-
 RUN apt-get update && apt-get install -y \
         git wget libmpc-dev verilator pip
+
+RUN wget -o archfx https://raw.githubusercontent.com/Archfx/archfx/main/images/banner.txt;  cat archfx >> ~/.bashrc ; rm archfx
 
 RUN pip install matplotlib numpy scipy tabulate scikit-learn pandas
 
