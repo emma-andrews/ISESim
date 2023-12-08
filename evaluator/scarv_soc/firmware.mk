@@ -11,7 +11,7 @@ OBJCOPY_HEX_ARGS= --gap-fill 0
 
 
 LINKER    = $(SOC_HOME)/src/examples/share/link.ld
-LINKER    = $(SOC_HOME)/src/fsbl/link.ld
+# LINKER    = $(SOC_HOME)/src/fsbl/link.ld
 
 
 # FW_SRC=$(SOC_WORK)/firmware.S
