@@ -1,17 +1,7 @@
 FROM scarv/libscarv.riscv-xcrypto:1.0.0 as builder
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV LOGO="\
-Project \e[1;35mCLEO\e[0m by \e[0;34m\\\n\
-\033[34m   _____                .__    _______________  ___ 
-\033[34m  /  _  \_______   ____ |  |__ \_   _____/\   \/  / 
-\033[34m /  /_\  \_  __ \_/ ___\|  |  \ |    __)   \     /  
-\033[34m/    |    \  | \/\  \___|   Y  \|     \    /     \  
-\033[34m\____|__  /__|    \___  >___|  /\___  /   /___/\  \ 
-\033[34m        \/            \/     \/     \/          \_/ 
-\e[0m"
-
-RUN echo "echo -e $LOGO" >> ~/.bashrc
+RUN wget -o archfx https://raw.githubusercontent.com/Archfx/archfx/main/images/banner.txt;  cat archfx >> ~/.bashrc ; rm archfx
 
 RUN apt-get update && apt-get install -y \
         git wget libmpc-dev verilator pip
