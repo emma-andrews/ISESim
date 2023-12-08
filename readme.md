@@ -55,7 +55,8 @@ git clone https://github.com/Archfx/Cleo  cleo
 2. Use the following commands to initiate submodules
 ```shell
 cd cleo
-git submodule update --init --recursive
+git submodule update --init
+git submodule update --init --recursive  eut/scarv-soc
 ```
 3. Pull the docker container and mount the project (You should be inside the project directory)
 ```shell

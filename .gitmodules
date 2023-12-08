@@ -2,13 +2,13 @@
 	path = eut/riscv-crypto
 	url = https://github.com/riscv/riscv-crypto
 	branch = main
-	recursive = none
+
 [submodule "eut/xcrypto"]
 	path = eut/xcrypto
 	url = https://github.com/scarv/xcrypto
 	branch = master
-	recursive = none
+
 [submodule "eut/scarv-soc"]
-        path = eut/scarv-soc
-        url = https://github.com/scarv/scarv-soc
-        branch = master
+	path = eut/scarv-soc
+	url = https://github.com/scarv/scarv-soc
+	branch = master
