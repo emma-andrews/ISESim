@@ -113,7 +113,7 @@ XCYPTO ISE is implemented in the SOC implementation of [scarv-soc](https://githu
 
 
 ### LICENCE
-Copyright (c) 2023 Aruna Jayasnea | අරුණ
+Copyright (c) 2023 original authors
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
