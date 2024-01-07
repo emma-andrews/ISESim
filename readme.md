@@ -114,6 +114,9 @@ XCYPTO ISE is implemented in the SOC implementation of [scarv-soc](https://githu
    </p>
 </p>
 
+### Artifacts for the 2024 ACM Submission
+
+This repository acts as the artifact container for the paper "Information Leakage Assessment of  Cryptographic Instruction Set Extension Prototypes" in ACM CCS 2024.
 
 ### LICENCE
 Copyright (c) 2023 original authors
