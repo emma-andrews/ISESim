@@ -78,7 +78,8 @@ Original implementations of the hardware functional units of RISCV-CRYPTO have a
 
 
 <p align="center">
-  <img  src="/evaluator/riscv_crypto_fu_ssha512/riscv_crypto_fu_ssha512.svg">
+<!--   <img  src="/evaluator/riscv_crypto_fu_ssha512/riscv_crypto_fu_ssha512.svg"> -->
+  <img  src="https://raw.githubusercontent.com/Archfx/Cleo/main/evaluator/riscv_crypto_fu_ssha512/riscv_crypto_fu_ssha512.svg?token=GHSAT0AAAAAAB6X4FFY6WNG4GAZNOV7ZUSOZM23D7A">
   <p align="center">
    <em>riscv_crypto_fu_ssha512 power signature compared with the inputs</em>
    </p>
@@ -93,7 +94,8 @@ As an example following is the power side channel signature of the [xc_sha256](h
 
 
 <p align="center">
-  <img  src="/evaluator/xc_sha256/xc_sha256.svg">
+<!--   <img  src="/evaluator/xc_sha256/xc_sha256.svg"> -->
+  <img  src="https://raw.githubusercontent.com/Archfx/Cleo/main/evaluator/xc_sha256/xc_sha256.svg?token=GHSAT0AAAAAAB6X4FFYE7FJGAQKEDLOMVG2ZM23E2Q">
   <p align="center">
    <em>xc_sha256 power signature compared with the inputs</em>
    </p>
@@ -105,7 +107,8 @@ XCYPTO ISE is implemented in the SOC implementation of [scarv-soc](https://githu
 
 
 <p align="center">
-  <img  src="/evaluator/xc_aesmix/Vscarv_soc-xc_aesmix.svg">
+<!--   <img  src="/evaluator/xc_aesmix/Vscarv_soc-xc_aesmix.svg"> -->
+  <img  src="https://raw.githubusercontent.com/Archfx/Cleo/main/evaluator/xc_aesmix/Vscarv_soc-xc_aesmix.svg?token=GHSAT0AAAAAAB6X4FFYDXVJBILAY2UIH5K2ZM23F7A">
   <p align="center">
    <em>Power signature of xc_aesmix on the system evaluation compared with the inputs</em>
    </p>
