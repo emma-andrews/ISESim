@@ -25,7 +25,7 @@ Here is the project structure. All the extensions under testing (```eut```) are 
 .
 ├── docker
 │   └── dockerfile # Environement
-├── eut # extenstions under test
+├── eut # extensions under test
 │   ├── riscv-crypto
 │   ├── scarv-soc
 │   └── xcrypto
