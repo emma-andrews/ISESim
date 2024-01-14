@@ -40,7 +40,9 @@ Here is the project structure. All the extensions under testing (```eut```) are 
 │   ├── riscv_crypto_fu_ssha512
 │   ├── xc_sha256
 │   ├── xc_sha512
-│   └── scarv_soc # For the evaluations of the xcrypto ISE
+│   ├── xc_aessub
+│   ├── xc_aesmix
+│   └── scarv_soc # SoC for the xcrypto
 └── readme.md # You are looking at it
 ```
 
