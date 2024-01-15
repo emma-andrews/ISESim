@@ -1,3 +1,6 @@
+MAKEFLAGS += -s
+export MAKEFLAGS
+
 TOPTARGETS := all clean
 
 # Filter out power_libs/ from the list of subdirectories
@@ -8,6 +11,9 @@ SUBDIRS := $(filter-out scarv_soc/., $(SUBDIRS))
 
 $(TOPTARGETS): $(SUBDIRS)
 $(SUBDIRS):
-		time $(MAKE) -s -C $@ $(MAKECMDGOALS)
+		start_time=$$(date +%s); \
+		$(MAKE) -s -C $@ $(MAKECMDGOALS); \
+		end_time=$$(date +%s); \
+		echo "Elapsed time: $$((end_time - start_time)) seconds."
 
 .PHONY: $(TOPTARGETS) $(SUBDIRS)
