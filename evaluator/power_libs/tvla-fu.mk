@@ -1,3 +1,5 @@
+start_time="$(date -u +%s.%N)"
+
 tvla-fu: print-fu $(VMODULE) toggle concat
 	./obj_dir/$(VMODULE)
 	cd obj_dir && ./toggle
@@ -5,6 +7,9 @@ tvla-fu: print-fu $(VMODULE) toggle concat
 	rm obj_dir/actual.csv
 	rm obj_dir/toggle.csv
 	$(POWER_LIBS)/plotter $(MODULE).csv 11
+	end_time="$(date -u +%s.%N)"
+	elapsed="$(bc <<<"$end_time-$start_time")"
+	echo "Total of $elapsed seconds elapsed for process"
 
 $(VMODULE): obj_dir/$(VMODULE).mk
 	make -C obj_dir -f $(VMODULE).mk $(VMODULE)
