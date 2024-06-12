@@ -116,7 +116,17 @@ XCYPTO ISE is implemented in the SOC implementation of [scarv-soc](https://githu
    </p>
 </p>
 
-
+### Cite this Work
+```tex
+@misc{cryptoeprint:2024/932,
+      author = {Aruna Jayasena and Richard Bachmann and Prabhat Mishra},
+      title = {{CISELeaks}: Information Leakage Assessment of  Cryptographic Instruction Set Extension Prototypes},
+      howpublished = {Cryptology ePrint Archive, Paper 2024/932},
+      year = {2024},
+      note = {\url{https://eprint.iacr.org/2024/932}},
+      url = {https://eprint.iacr.org/2024/932}
+}
+```
 ### LICENCE
 Copyright (c) 2023 original authors
 
