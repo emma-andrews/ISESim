@@ -1,5 +1,5 @@
 
-tvla-soc: tvla-fu print-soc soc-model #firmcat compile
+tvla-soc: print-soc soc-model #firmcat compile
 
 soc-model: clean-fu soc hexup
 

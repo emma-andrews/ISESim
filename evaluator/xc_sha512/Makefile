@@ -6,4 +6,3 @@ VMODULE=V$(MODULE)
 DUTPATH=../../eut/xcrypto/rtl/$(MODULE)/$(MODULE).v
 POWER_LIBS=../power_libs
 
-include $(POWER_LIBS)/tvla-fu.mk

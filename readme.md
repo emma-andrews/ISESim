@@ -1,5 +1,7 @@
-## ㊙️ Cleo: Cryptographic Leakage Evaluation of Hardware
+## ISESim
 [![DOI](https://sandbox.zenodo.org/badge/710492274.svg)](https://sandbox.zenodo.org/doi/10.5072/zenodo.75410)
+
+Use [Cleo](https://github.com/Archfx/Cleo) for simulation of RISC-V ISEs.
 
 Cleo is a Test Vector Leakage Assessment (TVLA) project that evaluates hardware implementations of cryptographic instruction set extensions for physical side-channel leakage. The current framework supports evaluating ongoing RISC-V cryptography extension standardization work. This is a complete power side-channel evaluation framework parallel to the existing test-based [functional validation suite](https://github.com/riscv/riscv-crypto/) and [formal verification suite](https://github.com/riscv/riscv-crypto/). 
 
@@ -47,30 +49,30 @@ Here is the project structure. All the extensions under testing (```eut```) are 
 └── readme.md # You are looking at it
 ```
 
-### Running CLEO 🏃‍♀️
+### Running ISESim and CLEO 🏃‍♀️
 
 Following are the steps to run the framework. [Docker](https://www.docker.com/get-started/) is a pre-requisite for Cleo since the complete environment for building everything is provided in [archfx/cleo](https://hub.docker.com/repository/docker/archfx/cleo/general) container.
 
 1. Clone the project repository
 ```shell
-git clone https://github.com/Archfx/Cleo  cleo
+git clone https://github.com/emma-andrews/ISESim  isesim
 ```
 2. Use the following commands to initiate submodules
 ```shell
-cd cleo
+cd isesim
 git submodule update --init
 git submodule update --init --recursive  eut/scarv-soc
 ```
 3. Pull the docker container and mount the project (You should be inside the project directory)
 ```shell
 docker pull archfx/cleo
-docker run -t -p 6080:6080 -v "${PWD}/:/cleo" -w /cleo --name cleo archfx/cleo
+docker run -t -p 6080:6080 -v "${PWD}/:/isesim" -w /isesim --name isesim archfx/cleo
 ```
 4. Access the docker container
 ```shell
-docker exec -it cleo /bin/bash
+docker exec -it isesim /bin/bash
 ```
-5. Finally run Cleo
+5. Finally run ISESim
 ```shell
 cd evaluator && make
 ```
